@@ -1,0 +1,100 @@
+# Your library, resolved to TMDB ids.
+#
+# Verified against TMDB 2026-08-14: 4,789 episodes, 99% with a non-empty
+# `overview`. Hand-resolved rather than fuzzy-matched, because several of these
+# have a wrong answer that a title search picks first — see the notes.
+#
+# This file is public data and contains nothing personal. It's the seed for the
+# deployed demo.
+
+series:
+  - name: Attack on Titan
+    tmdb: 1429
+    episodes: 87
+    # TMDB folds the Final Season Parts 1/2/3 into its own season numbering.
+    # Expect its season numbers to disagree with how anyone talks about them.
+
+  - name: One Piece
+    tmdb: 37854
+    episodes: 1181
+    # NOT 111110 — that's the 2023 Netflix live-action, and a title search
+    # returns it FIRST. The single clearest example of why this file exists.
+    # 8 of 1181 episodes lack an overview; everything else has one.
+
+  - name: Fullmetal Alchemist
+    tmdb: 37863
+    episodes: 51
+    # The 2003 series. Diverges from the manga partway through.
+
+  - name: Fullmetal Alchemist Brotherhood
+    tmdb: 31911
+    episodes: 64
+    # Separate adaptation of the same source. Its early episodes retell FMA's,
+    # so expect near-duplicate synopses in semantic search (Open risk: dedupe at
+    # query time, group per series — never delete rows).
+
+  - name: Naruto
+    tmdb: 46260
+    episodes: 220
+
+  - name: Naruto Shippuden
+    tmdb: 31910
+    episodes: 500
+    # AniList relation SEQUEL of Naruto. TMDB does not know that.
+
+  - name: Boruto Naruto Next Generations
+    tmdb: 70881
+    episodes: 293
+
+  - name: Dragon Ball
+    tmdb: 12609
+    episodes: 153
+
+  - name: Dragon Ball Z
+    tmdb: 12971
+    episodes: 291
+
+  - name: Dragon Ball GT
+    tmdb: 12697
+    episodes: 64
+
+  - name: Dragon Ball Super
+    tmdb: 62715
+    episodes: 131
+
+  - name: Dragon Ball Z Kai
+    tmdb: 61709
+    episodes: 158
+    # A recut of Z, not a sequel: same scenes, different episode boundaries.
+    # Will dominate "similar episodes" results against Z. Expected, not a bug.
+
+  - name: Frieren Beyond Journeys End
+    tmdb: 209867
+    episodes: 38
+
+  - name: Hunter x Hunter (1999)
+    tmdb: 45952
+    episodes: 62
+
+  - name: Hunter x Hunter (2011)
+    tmdb: 46298
+    episodes: 148
+    # Same name, same source, different adaptation — identical title string,
+    # two ids. Fuzzy matching cannot resolve this; only a human or the year can.
+
+  - name: Demon Slayer Kimetsu no Yaiba
+    tmdb: 85937
+    episodes: 63
+    # Seasons are named by arc (Mugen Train, Entertainment District,
+    # Swordsmith Village). Keep the names in `title`, keep TMDB's number in
+    # `ordinal`, don't reconcile them.
+
+  - name: Pokemon
+    tmdb: 60572
+    episodes: 1235
+    # ONE show with 25 seasons, not 25 separate shows — that question is now
+    # answered. Biggest single source of ordinal/absolute_ordinal divergence.
+
+  - name: Spy x Family
+    tmdb: 120089
+    episodes: 50
